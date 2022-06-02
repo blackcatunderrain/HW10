@@ -22,11 +22,18 @@ def get_candidates_by_uid(uid: int) -> dict | None:
     return None
 
 
+def get_candidates_by_skill(skill: str) -> list[dict]:
+    candidates = get_candidates()
+    result = []
+    for i in candidates:
+        if skill.lower() in i["skills"].lower().split(", "):
+            result.append(i)
+    return result
+
+
 def make_page_candidates(candidates: list) -> str:
     data = "<pre>"
-
     for i in candidates:
         data += f"{i['name']}\n {i['position']}\n{i['skills']}\n"
-
     data += "</pre>"
     return data
