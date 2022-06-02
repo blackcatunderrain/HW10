@@ -11,10 +11,12 @@ def load_candidates(filename: str) -> list[dict]:
 
 
 def get_candidates() -> list[dict]:
+    """Получить кандидатов"""
     return load_candidates(FILENAME)
 
 
 def get_candidates_by_uid(uid: int) -> dict | None:
+    """Получить кандидата по UID"""
     candidates = get_candidates()
     for i in candidates:
         if i["id"] == uid:
@@ -23,6 +25,7 @@ def get_candidates_by_uid(uid: int) -> dict | None:
 
 
 def get_candidates_by_skill(skill: str) -> list[dict]:
+    """Получить кандидатов по скилу"""
     candidates = get_candidates()
     result = []
     for i in candidates:
@@ -32,6 +35,7 @@ def get_candidates_by_skill(skill: str) -> list[dict]:
 
 
 def make_page_candidates(candidates: list) -> str:
+    """Создать страницу кандидатов для вью"""
     data = "<pre>"
     for i in candidates:
         data += f"{i['name']}\n {i['position']}\n{i['skills']}\n"
